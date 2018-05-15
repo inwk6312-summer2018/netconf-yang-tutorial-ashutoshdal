@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-#
-# Get configured interfaces using Netconf
-#
-# darien@sdnessentials.com
-#
-
 from ncclient import manager
 import sys
 import xml.dom.minidom
@@ -20,7 +13,7 @@ PORT = 830
 USER = 'cisco'
 PASS = 'cisco'
 # XML file to open
-FILE = 'get_interface_gigabit3.xml'
+FILE = 'get_interfaces.xml'
 
 
 # create a main() method
@@ -41,9 +34,7 @@ def main():
     Simple main method calling our function.
     """
     interfaces = get_configured_interfaces(FILE)
-    interfaces = xml.dom.minidom.parseString(interfaces.xml)
-    interfaces = interfaces.getElementsByTagName("interfaces")
-    print(interfaces[0].toprettyxml())
+    print(xml.dom.minidom.parseString(interfaces.xml).toprettyxml())
 #     return (interfaces)
 
 if __name__ == '__main__':
